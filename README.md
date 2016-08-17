@@ -1,2 +1,2 @@
-# Codewars-Sol-JavaScript
+# Codewars-Solu-JavaScript
 JavaScript Solutions on Codewars
