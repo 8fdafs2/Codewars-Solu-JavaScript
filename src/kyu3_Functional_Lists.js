@@ -1,26 +1,26 @@
 'use strict';
 
 // implement everything but length/remove/append properties
-var List = function () {};
-var EmptyList = function () {};
+var List = function() {};
+var EmptyList = function() {};
 EmptyList.prototype = new List();
 EmptyList.prototype.constructor = EmptyList;
-EmptyList.prototype.toString = function () {
+EmptyList.prototype.toString = function() {
     return '()';
 };
-EmptyList.prototype.isEmpty = function () {
+EmptyList.prototype.isEmpty = function() {
     return true;
 };
-EmptyList.prototype.length = function () {
+EmptyList.prototype.length = function() {
     return 0;
 };
-EmptyList.prototype.push = function (x) {
+EmptyList.prototype.push = function(x) {
     return new ListNode(x, this);
 };
-EmptyList.prototype.remove = function (x) {
+EmptyList.prototype.remove = function(x) {
     return this;
 };
-EmptyList.prototype.append = function (xs) {
+EmptyList.prototype.append = function(xs) {
     return xs;
 };
 
@@ -30,10 +30,10 @@ function ListNode(value, next) {
 }
 ListNode.prototype = new List();
 ListNode.prototype.constructor = ListNode;
-ListNode.prototype.isEmpty = function () {
+ListNode.prototype.isEmpty = function() {
     return false;
 };
-ListNode.prototype.toString = function () {
+ListNode.prototype.toString = function() {
     let ret = [];
     let node = this;
     while (!node.isEmpty()) {
@@ -42,13 +42,13 @@ ListNode.prototype.toString = function () {
     }
     return '(' + ret.join(' ') + ')';
 };
-ListNode.prototype.head = function () {
+ListNode.prototype.head = function() {
     return this.value;
 };
-ListNode.prototype.tail = function () {
+ListNode.prototype.tail = function() {
     return this.next;
 };
-ListNode.prototype.push = function (x) {
+ListNode.prototype.push = function(x) {
     return new ListNode(x, this);
 };
 // ---------------------------------------------
@@ -104,26 +104,26 @@ var Solution = {
 
     In this kata, you will create a simple, immutable, singly-linked list.
 
-    Most list implementations use mutable nodes. 
-    Mutability brings with it a whole host of problems 
-    (especially in threaded environments, 
-    but even just with state saved and shared in multiple places). 
-    When you shift to immutable nodes, 
-    you gain a new ability to reason about things. 
+    Most list implementations use mutable nodes.
+    Mutability brings with it a whole host of problems
+    (especially in threaded environments,
+    but even just with state saved and shared in multiple places).
+    When you shift to immutable nodes,
+    you gain a new ability to reason about things.
     If you have a list, it will never contain different things than it does at the moment.
 
-    However, when dealing with immutable nodes, 
-    one has to take special steps to try to maintain efficiency. 
-    For example, to add a node to the beginning of a list, 
-    you don't want to have to duplicate the whole list. 
-    You want to be able to share as many nodes of 
-    the list as possible between the original list and 
+    However, when dealing with immutable nodes,
+    one has to take special steps to try to maintain efficiency.
+    For example, to add a node to the beginning of a list,
+    you don't want to have to duplicate the whole list.
+    You want to be able to share as many nodes of
+    the list as possible between the original list and
     the newly generated list (while still being a singly-linked list).
 
-    There are two classes involved here: EmptyList and ListNode. 
-    Each of these should support the following operations: 
-    toString(), isEmpty(), length(), push(), remove(), and append(). 
-    If isEmpty() returns false, 
+    There are two classes involved here: EmptyList and ListNode.
+    Each of these should support the following operations:
+    toString(), isEmpty(), length(), push(), remove(), and append().
+    If isEmpty() returns false,
     then the following two methods should also be supported: head() and tail().
 
     var list0 = new EmptyList();        // => "()"
@@ -147,44 +147,44 @@ var Solution = {
       next: { value: 2,
               next: { value: 3,
                       next: {} } } }
-    The EmptyList constructor takes no arguments. 
-    The ListNode constructor takes a value and a next parameter. 
-    The value parameter can be anything. 
-    The next parameter will be either a ListNode instance or 
+    The EmptyList constructor takes no arguments.
+    The ListNode constructor takes a value and a next parameter.
+    The value parameter can be anything.
+    The next parameter will be either a ListNode instance or
     an EmptyList instance representing the rest of the list after this node.
 
-    The toString() method should return "()" for an EmptyList and 
+    The toString() method should return "()" for an EmptyList and
     "(1 2 3)" for a list containing the numbers 1, 2, and 3.
 
-    The isEmpty() method will return true for EmptyList instances and 
+    The isEmpty() method will return true for EmptyList instances and
     false for the ListNode instances.
 
     The length() method will return the number of non-EmptyList nodes in a list.
 
-    The orig.push(x) method will create a list whose first node contains 
-    the value x and where the new list shares as many nodes as possible with 
+    The orig.push(x) method will create a list whose first node contains
+    the value x and where the new list shares as many nodes as possible with
     orig (while still being a singly-linked list).
 
-    The orig.remove(x) method will create a list where all nodes with 
-    value x are removed and which shares as many nodes as possible with 
+    The orig.remove(x) method will create a list where all nodes with
+    value x are removed and which shares as many nodes as possible with
     orig (while still being a singly-linked list).
 
-    The orig.append(other) method will create a list which is 
-    a concatenation of all nodes in orig and all nodes in other and 
-    which shares as many nodes as possible with orig and other 
+    The orig.append(other) method will create a list which is
+    a concatenation of all nodes in orig and all nodes in other and
+    which shares as many nodes as possible with orig and other
     (while still being a singly-linked list).
 
-    If orig.isEmpty() returns false, then orig.head() should return 
-    the value in the first node of the list. 
-    The orig.tail() should return the sublist of 
+    If orig.isEmpty() returns false, then orig.head() should return
+    the value in the first node of the list.
+    The orig.tail() should return the sublist of
     orig containing all of the nodes except the first node in orig.
     `
 };
 Solution.subSol_01 = {
     d: `iterative`,
-    f: function () {
+    f: function() {
         // only implement length/remove/append properties here.
-        ListNode.prototype.length = function () {
+        ListNode.prototype.length = function() {
             let ret = 0;
             let node = this;
             while (!node.isEmpty()) {
@@ -193,7 +193,7 @@ Solution.subSol_01 = {
             }
             return ret;
         };
-        ListNode.prototype.append = function (xs) {
+        ListNode.prototype.append = function(xs) {
             let ret = new ListNode(this.value);
             let node = ret;
             let node$ = this.next;
@@ -205,7 +205,7 @@ Solution.subSol_01 = {
             node.next = xs;
             return ret;
         };
-        ListNode.prototype.remove = function (x) {
+        ListNode.prototype.remove = function(x) {
             let ret;
             let node$ = this;
             while (!node$.isEmpty()) {
@@ -249,15 +249,15 @@ Solution.subSol_01 = {
 };
 Solution.subSol_02 = {
     d: `recursion`,
-    f: function () {
+    f: function() {
         // only implement length/remove/append properties here.
-        ListNode.prototype.length = function () {
+        ListNode.prototype.length = function() {
             return 1 + this.next.length();
         };
-        ListNode.prototype.append = function (xs) {
+        ListNode.prototype.append = function(xs) {
             return new ListNode(this.value, this.next.append(xs));
         };
-        ListNode.prototype.remove = function (x) {
+        ListNode.prototype.remove = function(x) {
             var node = this.next.remove(x);
             if (x == this.value) // skipped
                 return node;
@@ -272,19 +272,19 @@ Solution.subSol_02 = {
 };
 Solution.subSol_03 = {
     d: `recursion, head/tail`,
-    f: function (x) {
+    f: function(x) {
         // only implement length/remove/append properties here.
-        ListNode.prototype.length = function () {
+        ListNode.prototype.length = function() {
             return 1 + this.tail().length();
         };
-        ListNode.prototype.append = function (xs) {
+        ListNode.prototype.append = function(xs) {
             if (this.tail().isEmpty()) {
                 return new ListNode(this.head(), xs);
             } else {
                 return new ListNode(this.head(), this.tail().append(xs));
             }
         };
-        ListNode.prototype.remove = function (x) {
+        ListNode.prototype.remove = function(x) {
             if (this.head() == x) {
                 return this.tail().remove(x);
             } else {
@@ -295,7 +295,7 @@ Solution.subSol_03 = {
                 }
             }
         };
-        ListNode.prototype.contains = function (x) {
+        ListNode.prototype.contains = function(x) {
             return this.head() === x || (!this.tail().isEmpty() && this.tail().contains(x));
         };
         this.f = g;

@@ -80,27 +80,27 @@ let Solution = {
 
     The problem
 
-    In this kata, 
-    you're going write a function called pointInPoly to 
+    In this kata,
+    you're going write a function called pointInPoly to
     test if a point is inside a polygon.
 
     Points will be represented as [x,y] arrays.
 
-    The polygon will be an array of points which are 
-    the polygon's vertices. 
+    The polygon will be an array of points which are
+    the polygon's vertices.
     The last point in the array connects back to the first point.
 
     You can assume:
 
-    The polygon will be a valid simple polygon. 
-    That is, it will have at least three points, 
-    none of its edges will cross each other, 
+    The polygon will be a valid simple polygon.
+    That is, it will have at least three points,
+    none of its edges will cross each other,
     and exactly two edges will meet at each vertex.
     In the tests, the point will never fall exactly on an edge of the polygon.
     Testing
 
-    To help you visualize your test cases, 
-    the ret.push(poly,point,inside) function is preloaded. 
+    To help you visualize your test cases,
+    the ret.push(poly,point,inside) function is preloaded.
     It draws the polygon and point and then calls Test.expect automatically.
 
     So if you call:
@@ -113,10 +113,10 @@ let Solution = {
 };
 Solution.pointInPoly_01 = {
     d: `ray-casting, to-right`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // ray-casting algorithm
         // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
         let n = poly.length;
@@ -133,10 +133,10 @@ Solution.pointInPoly_01 = {
 };
 Solution.pointInPoly_02 = {
     d: `ray-casting, to-up`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // ray-casting algorithm
         // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
         let n = poly.length;
@@ -153,10 +153,10 @@ Solution.pointInPoly_02 = {
 };
 Solution.pointInPoly_03 = {
     d: `winding number, atan2`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -182,10 +182,10 @@ Solution.pointInPoly_03 = {
 };
 Solution.pointInPoly_04 = {
     d: `winding number, atan2 - atan2`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let pi = Math.PI;
         let pipi = pi + pi;
@@ -204,10 +204,10 @@ Solution.pointInPoly_04 = {
 };
 Solution.pointInPoly_05 = {
     d: `winding number, acos`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -237,10 +237,10 @@ Solution.pointInPoly_05 = {
 };
 Solution.pointInPoly_06 = {
     d: `winding number, Dan Sunday, to-right`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         let n = poly.length;
         let [x, y] = point;
         let w = 0;
@@ -264,10 +264,10 @@ Solution.pointInPoly_06 = {
 };
 Solution.pointInPoly_07 = {
     d: `winding number, Dan Sunday, to-right, isLeft`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         let n = poly.length;
         let [x, y] = point;
         let w = 0;
@@ -295,10 +295,10 @@ Solution.pointInPoly_07 = {
 };
 Solution.pointInPoly_08 = {
     d: `winding number, Kai Hormann, 1st version`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -322,19 +322,19 @@ Solution.pointInPoly_08 = {
         poly.push(poly[0]);
         for (let i = 0, xi, yi, xj, yj; i < n; i++) {
             switch (quadrants[i + 1] - quadrants[i]) {
-            case 1:
-            case -3:
-                w++;
-                break;
-            case -1:
-            case 3:
-                w--;
-                break;
-            case 2:
-            case -2:
-                [xi, yi] = poly[i];
-                [xj, yj] = poly[i + 1];
-                w += vect(xi - x, yi - y, xj - x, yj - y) > 0 ? 2 : -2;
+                case 1:
+                case -3:
+                    w++;
+                    break;
+                case -1:
+                case 3:
+                    w--;
+                    break;
+                case 2:
+                case -2:
+                    [xi, yi] = poly[i];
+                    [xj, yj] = poly[i + 1];
+                    w += vect(xi - x, yi - y, xj - x, yj - y) > 0 ? 2 : -2;
             }
         }
         return w !== 0; // w / 4 !== 0
@@ -342,10 +342,10 @@ Solution.pointInPoly_08 = {
 };
 Solution.pointInPoly_09 = {
     d: `winding number, Kai Hormann, 2nd version`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -369,23 +369,23 @@ Solution.pointInPoly_09 = {
         poly.push(poly[0]);
         for (let i = 0, xi, yi, xj, yj; i < n; i++) {
             switch (quadrants[i + 1] - quadrants[i]) {
-            case -3:
-                w++;
-                break;
-            case 3:
-                w--;
-                break;
-            case -2:
-                [xi, yi] = poly[i];
-                [xj, yj] = poly[i + 1];
-                if (vect(xi - x, yi - y, xj - x, yj - y) > 0)
+                case -3:
                     w++;
-                break;
-            case 2:
-                [xi, yi] = poly[i];
-                [xj, yj] = poly[i + 1];
-                if (vect(xi - x, yi - y, xj - x, yj - y) < 0)
+                    break;
+                case 3:
                     w--;
+                    break;
+                case -2:
+                    [xi, yi] = poly[i];
+                    [xj, yj] = poly[i + 1];
+                    if (vect(xi - x, yi - y, xj - x, yj - y) > 0)
+                        w++;
+                    break;
+                case 2:
+                    [xi, yi] = poly[i];
+                    [xj, yj] = poly[i + 1];
+                    if (vect(xi - x, yi - y, xj - x, yj - y) < 0)
+                        w--;
             }
         }
         return w !== 0;
@@ -393,10 +393,10 @@ Solution.pointInPoly_09 = {
 };
 Solution.pointInPoly_10 = {
     d: `winding number, Kai Hormann, 3rd version`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -426,23 +426,23 @@ Solution.pointInPoly_10 = {
         poly.push(poly[0]);
         for (let i = 0, xi, yi, xj, yj; i < n; i++) {
             switch (quadrants[i + 1] - quadrants[i]) {
-            case -3:
-                w++;
-                break;
-            case 3:
-                w--;
-                break;
-            case -2:
-                [xi, yi] = poly[i];
-                [xj, yj] = poly[i + 1];
-                if (vect(xi - x, yi - y, xj - x, yj - y) > 0)
+                case -3:
                     w++;
-                break;
-            case 2:
-                [xi, yi] = poly[i];
-                [xj, yj] = poly[i + 1];
-                if (vect(xi - x, yi - y, xj - x, yj - y) < 0)
+                    break;
+                case 3:
                     w--;
+                    break;
+                case -2:
+                    [xi, yi] = poly[i];
+                    [xj, yj] = poly[i + 1];
+                    if (vect(xi - x, yi - y, xj - x, yj - y) > 0)
+                        w++;
+                    break;
+                case 2:
+                    [xi, yi] = poly[i];
+                    [xj, yj] = poly[i + 1];
+                    if (vect(xi - x, yi - y, xj - x, yj - y) < 0)
+                        w--;
             }
         }
         return w !== 0;
@@ -450,10 +450,10 @@ Solution.pointInPoly_10 = {
 };
 Solution.pointInPoly_11 = {
     d: `winding number, Kai Hormann, 4th version`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -478,10 +478,10 @@ Solution.pointInPoly_11 = {
 };
 Solution.pointInPoly_12 = {
     d: `winding number, Kai Hormann, 5th version`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;
@@ -502,10 +502,10 @@ Solution.pointInPoly_12 = {
 };
 Solution.pointInPoly_13 = {
     d: `winding number, Kai Hormann, 6th version`,
-    f: function () {
+    f: function() {
         return g(this.f$);
     },
-    f$: function (poly, point) {
+    f$: function(poly, point) {
         // winding number algorithm
         let n = poly.length;
         let [x, y] = point;

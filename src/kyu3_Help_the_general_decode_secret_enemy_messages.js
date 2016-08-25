@@ -2,7 +2,7 @@
 
 function Device() {
     let init = '?.6YIcflxVC5WE94UA1OoD70MkvRuPqHabdhpF,82QsLirJejtNmzZKgnB3SwTyXG ';
-    let encode = function (what, init) {
+    let encode = function(what, init) {
         let n = init.length;
         let ret = '';
         for (let i = 0, ind, cnt = 0; i < what.length; i++) {
@@ -17,7 +17,7 @@ function Device() {
         return ret;
     };
     let device = {};
-    this.encode = function (what) {
+    this.encode = function(what) {
         return encode(what, init);
     };
 }
@@ -62,7 +62,7 @@ let Solution = {
 };
 Solution.decode_01 = {
     d: `intuitive`,
-    f: function (what) {
+    f: function(what) {
         const letters = '?.6YIcflxVC5WE94UA1OoD70MkvRuPqHabdhpF,82QsLirJejtNmzZKgnB3SwTyXG ';
         let n = letters.length;
         let ret = '';
@@ -80,7 +80,7 @@ Solution.decode_01 = {
 };
 Solution.decode_02 = {
     d: ``,
-    f: function (what) {
+    f: function(what) {
         for (let j = 0; j < 65; j++) {
             what = device.encode(what);
         }
@@ -108,7 +108,7 @@ Solution.decode_02 = {
 // };
 Solution.decode_04 = {
     d: ``,
-    f: function (what) {
+    f: function(what) {
         let chrs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.0123456789? ';
         let table = chrs.split('').map((c) => device.encode(new Array(67).join(c)));
         console.log(table);
@@ -121,9 +121,9 @@ Solution.decode_04 = {
 };
 Solution.decode_05 = {
     d: ``,
-    f: function (what) {
+    f: function(what) {
         let chrs = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,? ';
-        return what.replace(/./g, function (c, i) {
+        return what.replace(/./g, function(c, i) {
             let ind = chrs.indexOf(c) + 1;
             while (i-- >= 0)
                 ind = ind % 2 ? (ind + 67) / 2 : ind / 2;
