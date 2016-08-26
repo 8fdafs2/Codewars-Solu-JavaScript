@@ -152,16 +152,16 @@ let Solution = {
 };
 Solution.subSol_01 = {
   d: `intuitive`,
-  f: function () {
+  f: function() {
     return g(this.f$());
   },
-  f$: function () {
+  f$: function() {
     function TicTacToe() {
       this.s = new Array(9).fill(0);
       this.c = 0;
       this.t = 0;
     }
-    TicTacToe.prototype.move = function (field) {
+    TicTacToe.prototype.move = function(field) {
       if (this.c == 9) return [0, "Game ended"];
       let tab = [
         [this.s[0] + this.s[1] + this.s[2], [0, 1, 2]],
@@ -220,10 +220,10 @@ Solution.subSol_01 = {
 
 Solution.subSol_02 = {
   d: ``,
-  f: function () {
+  f: function() {
     return g(this.f$());
   },
-  f$: function () {
+  f$: function() {
     function TicTacToe() {
       let b = 'x         ',
         p = ['1', '2'],
@@ -238,7 +238,7 @@ Solution.subSol_02 = {
         if (b.search(' ') < 0) throw [f, m || 'Draw!'];
       }
 
-      this.move = function (f) {
+      this.move = function(f) {
         function legal() {
           if (b[f] != ' ') throw [0, 'Illegal move'];
         }
@@ -250,7 +250,7 @@ Solution.subSol_02 = {
           win(0, g);
           draw(0, g);
           f ? (legal(), put(0), win(0, 'You win!'), draw(0)) : p.reverse();
-          c.some(function (c, i) {
+          c.some(function(c, i) {
             return b[f = c] == ' ' && put(1);
           });
           win(f, 'I win!');
@@ -267,10 +267,10 @@ Solution.subSol_02 = {
 
 Solution.subSol_03 = {
   d: ``,
-  f: function () {
+  f: function() {
     return g(this.f$());
   },
-  f$: function () {
+  f$: function() {
     let horizontal = '123 456 789'.split(' ');
     let vertical = '147 258 369'.split(' ');
     let diagonal = '159 357'.split(' ');
