@@ -6,7 +6,7 @@ let Solution = {
 };
 Solution.subSol_01 = {
   d: ``,
-  f: function(x) {
+  f: function (x) {
     return;
   }
 };
