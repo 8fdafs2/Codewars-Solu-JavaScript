@@ -26,7 +26,7 @@ from './common';
 
 function genSets(subSol) {
   let testSets = [];
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 100; ++i) {
     let x = randNumber(0, 100);
     let match = subSol.f(x);
     testSets.push([
