@@ -11,9 +11,20 @@ function g(subSol, asciiStr) {
 }
 
 let Solution = {
-  d: `
-    Description
-    `
+  /*
+http://www.codewars.com/kata/base64-encoding
+
+Extend the String object (JS) or create a function (Python) that converts the value of the String to and from Base64 using the ASCII character set.
+
+Usage:
+
+// should return 'dGhpcyBpcyBhIHN0cmluZyEh'
+'this is a string!!'.toBase64(); 
+
+// should return 'this is a string!!'
+'dGhpcyBpcyBhIHN0cmluZyEh'.fromBase64();
+You can learn more about Base64 encoding and decoding here.
+  */
 };
 Solution.subSol_01 = {
   d: `built-in`,
@@ -48,10 +59,10 @@ Solution.subSol_02 = {
       let c;
       for (; j < l - r; j += 3) {
         c = [
-                    this.charCodeAt(j),
-                    this.charCodeAt(j + 1),
-                    this.charCodeAt(j + 2),
-                ];
+          this.charCodeAt(j),
+          this.charCodeAt(j + 1),
+          this.charCodeAt(j + 2),
+        ];
         ret += letters.charAt(c[0] >> 2);
         ret += letters.charAt(((c[0] & 3) << 4) | (c[1] >> 4));
         ret += letters.charAt(((c[1] & 15) << 2) | (c[2] >> 6));
@@ -80,21 +91,21 @@ Solution.subSol_02 = {
       let c;
       for (; j < l - 4; j += 4) {
         c = [
-                    letters.indexOf(this.charAt(j)),
-                    letters.indexOf(this.charAt(j + 1)),
-                    letters.indexOf(this.charAt(j + 2)),
-                    letters.indexOf(this.charAt(j + 3)),
-                ];
+          letters.indexOf(this.charAt(j)),
+          letters.indexOf(this.charAt(j + 1)),
+          letters.indexOf(this.charAt(j + 2)),
+          letters.indexOf(this.charAt(j + 3)),
+        ];
         ret += String.fromCharCode((c[0] << 2) | (c[1] >> 4));
         ret += String.fromCharCode(((c[1] & 15) << 4) | (c[2] >> 2));
         ret += String.fromCharCode(((c[2] & 3) << 6) | c[3]);
       }
       c = [
-                letters.indexOf(this.charAt(j)),
-                letters.indexOf(this.charAt(j + 1)),
-                letters.indexOf(this.charAt(j + 2)),
-                letters.indexOf(this.charAt(j + 3)),
-            ];
+        letters.indexOf(this.charAt(j)),
+        letters.indexOf(this.charAt(j + 1)),
+        letters.indexOf(this.charAt(j + 2)),
+        letters.indexOf(this.charAt(j + 3)),
+      ];
       if (c[2] < 0) {
         ret += String.fromCharCode((c[0] << 2) | (c[1] >> 4));
       } else if (c[3] < 0) {
@@ -154,9 +165,9 @@ function genSets(subSol) {
     let asciiStr = randString(i);
     let match = subSol.f(asciiStr);
     testSets.push([
-            [asciiStr, ],
-            match
-        ]);
+      [asciiStr, ],
+      match
+    ]);
   }
   return testSets;
 
